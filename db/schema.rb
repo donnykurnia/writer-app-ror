@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120418182339) do
+ActiveRecord::Schema.define(:version => 20120418184104) do
 
   create_table "teams", :force => true do |t|
     t.string   "name"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20120418182339) do
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["role"], :name => "index_users_on_role"
   add_index "users", ["team_id"], :name => "index_users_on_team_id"
-  add_index "users", ["username"], :name => "index_users_on_username"
+  add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
   add_foreign_key "users", "teams", :name => "users_team_id_fk"
 
