@@ -43,5 +43,5 @@ gem "cancan", "~> 1.6.7"
 
 gem "foreigner", "~> 1.1.6"
 gem "immigrant", "~> 0.1.1"
-gem "acts_as_paranoid", "~> 0.3.1"
+gem "rails3_acts_as_paranoid", "~> 0.2.2"
 gem "will_paginate", "~> 3.0.3"
