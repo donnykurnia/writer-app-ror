@@ -37,8 +37,11 @@ gem 'capistrano'
 gem 'thin'
 gem 'heroku'
 gem 'taps'
+
 gem "devise", "~> 2.0.4"
 gem "cancan", "~> 1.6.7"
-gem "foreigner", "~> 1.1.6"
-gem "will_paginate", "~> 3.0.3"
 
+gem "foreigner", "~> 1.1.6"
+gem "immigrant", "~> 0.1.1"
+gem "acts_as_paranoid", "~> 0.3.1"
+gem "will_paginate", "~> 3.0.3"
