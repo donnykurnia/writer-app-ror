@@ -14,7 +14,7 @@ group :assets do
   # gem 'therubyracer', :platform => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-  gem "less-rails-bootstrap", "~> 2.0.10"
+  gem 'bootstrap-sass'
 end
 
 gem 'jquery-rails'
