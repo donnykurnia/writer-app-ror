@@ -59,6 +59,11 @@ GEM
       multi_json (~> 1.0)
     foreigner (1.1.6)
       activerecord (>= 3.0.0)
+    formtastic (2.2.0)
+      actionpack (>= 3.0)
+    formtastic-bootstrap (1.1.1)
+      formtastic
+      rails (~> 3.1)
     heroku (2.24.1)
       launchy (>= 0.3.2)
       netrc (~> 0.7.1)
@@ -173,6 +178,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise (~> 2.0.4)
   foreigner (~> 1.1.6)
+  formtastic-bootstrap
   heroku
   immigrant (~> 0.1.1)
   jquery-rails
