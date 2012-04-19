@@ -67,18 +67,9 @@
           </div><!--/span-->
           <div class="span9">
             <div id="messages_area">
-              <% if notice %>
-                <div class="alert alert-info">
-                  <a class="close" data-dismiss="alert">×</a>
-                  <i class="icon-info-sign"></i> <%= notice %>
-                </div>
-              <% end %>
-              <% if alert %>
-                <div class="alert alert-error">
-                  <a class="close" data-dismiss="alert">×</a>
-                  <i class="icon-warning-sign"></i> <%= alert %>
-                </div>
-              <% end %>
+              <% flash.each do |name, msg| -%>
+                <%= display_flash(name,msg) %>
+              <% end -%>
             </div>
             <%= yield %>
           </div>
