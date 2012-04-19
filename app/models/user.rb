@@ -11,4 +11,9 @@ class User < ActiveRecord::Base
   has_many :projects
 
   acts_as_paranoid
+
+  def name
+    self.username || self.email
+  end
+
 end
