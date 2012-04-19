@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120419064704) do
+ActiveRecord::Schema.define(:version => 20120419081839) do
 
   create_table "projects", :force => true do |t|
     t.string   "title"
@@ -66,6 +66,9 @@ ActiveRecord::Schema.define(:version => 20120419064704) do
   add_index "users", ["role"], :name => "index_users_on_role"
   add_index "users", ["team_id"], :name => "index_users_on_team_id"
   add_index "users", ["username"], :name => "index_users_on_username", :unique => true
+
+  add_foreign_key "projects", "teams", :name => "projects_team_id_fk"
+  add_foreign_key "projects", "users", :name => "projects_creator_id_fk", :column => "creator_id"
 
   add_foreign_key "users", "teams", :name => "users_team_id_fk"
 
