@@ -39,8 +39,7 @@
             <ul class="nav pull-right">
               <li class="divider-vertical"></li>
               <% if user_signed_in? %>
-                <li><a href="#">Hi, <%= current_user.email %></a></li>
-                <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+                <li><%= link_to "Sign out (#{current_user.email})", destroy_user_session_path, :method => :delete %></li>
               <% else %>
                 <li><%= link_to "Sign in", new_user_session_path %></li>
               <% end %>
