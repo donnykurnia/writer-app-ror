@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :login, :full_name, :role
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :login, :full_name, :role, :team_id
   attr_accessor :login
 
   belongs_to :team
@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   validates :username, :presence => true
 
   def name
-    self.username || self.email
+    self.full_name || self.username || self.email
   end
 
   def self.find_for_database_authentication(warden_conditions)
