@@ -34,6 +34,7 @@
             <% if user_signed_in? %>
               <ul class="nav">
                 <li><%= link_to "Projects", projects_path %></li>
+                <li><%= link_to "Users", users_path %></li>
               </ul>
             <% end %>
             <ul class="nav pull-right">
@@ -59,6 +60,7 @@
                 <li class="nav-header">Welcome, <%= user_signed_in? ? current_user.email : "guest" %></li>
                 <% if user_signed_in? %>
                   <li><%= link_to "Projects", projects_path  %></li>
+                  <li><%= link_to "Users", users_path %></li>
                   <li class="divider"></li>
                   <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
                 <% else %>
