@@ -1,8 +1,9 @@
 WriterAppRor::Application.routes.draw do
-  resources :projects
-  resources :users
 
   devise_for :users
+
+  resources :projects
+  resources :users
 
   root :to => 'welcome#index'
 end
