@@ -1,37 +1,48 @@
-<h1>Listing projects</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Total cost</th>
-    <th>Team</th>
-    <th>Status</th>
-    <th>Deadline</th>
-    <th>Deleted at</th>
-    <th>Creator</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @projects.each do |project| %>
-  <tr>
-    <td><%= project.title %></td>
-    <td><%= project.description %></td>
-    <td><%= project.total_cost %></td>
-    <td><%= project.team_id %></td>
-    <td><%= project.status %></td>
-    <td><%= project.deadline %></td>
-    <td><%= project.deleted_at %></td>
-    <td><%= project.creator_id %></td>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+<%- model_class = Project.new.class -%>
+<h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:total_cost) %></th>
+      <th><%= model_class.human_attribute_name(:team_id) %></th>
+      <th><%= model_class.human_attribute_name(:status) %></th>
+      <th><%= model_class.human_attribute_name(:deadline) %></th>
+      <th><%= model_class.human_attribute_name(:deleted_at) %></th>
+      <th><%= model_class.human_attribute_name(:creator_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= link_to project.id, project_path(project) %></td>
+        <td><%= project.title %></td>
+        <td><%= project.description %></td>
+        <td><%= project.total_cost %></td>
+        <td><%= project.team_id %></td>
+        <td><%= project.status %></td>
+        <td><%= project.deadline %></td>
+        <td><%= project.deleted_at %></td>
+        <td><%= project.creator_id %></td>
+        <td><%=l project.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_project_path(project), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      project_path(project),
+                      :method => :delete,
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Project', new_project_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_project_path,
+            :class => 'btn btn-primary' %>

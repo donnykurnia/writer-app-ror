@@ -1,45 +1,47 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = @project.class -%>
+<h1><%=t '.title', :default => model_class.model_name.human %></h1>
 
 <p>
-  <b>Title:</b>
+  <strong><%= model_class.human_attribute_name(:title) %>:</strong><br>
   <%= @project.title %>
 </p>
-
 <p>
-  <b>Description:</b>
+  <strong><%= model_class.human_attribute_name(:description) %>:</strong><br>
   <%= @project.description %>
 </p>
-
 <p>
-  <b>Total cost:</b>
+  <strong><%= model_class.human_attribute_name(:total_cost) %>:</strong><br>
   <%= @project.total_cost %>
 </p>
-
 <p>
-  <b>Team:</b>
+  <strong><%= model_class.human_attribute_name(:team_id) %>:</strong><br>
   <%= @project.team_id %>
 </p>
-
 <p>
-  <b>Status:</b>
+  <strong><%= model_class.human_attribute_name(:status) %>:</strong><br>
   <%= @project.status %>
 </p>
-
 <p>
-  <b>Deadline:</b>
+  <strong><%= model_class.human_attribute_name(:deadline) %>:</strong><br>
   <%= @project.deadline %>
 </p>
-
 <p>
-  <b>Deleted at:</b>
+  <strong><%= model_class.human_attribute_name(:deleted_at) %>:</strong><br>
   <%= @project.deleted_at %>
 </p>
-
 <p>
-  <b>Creator:</b>
+  <strong><%= model_class.human_attribute_name(:creator_id) %>:</strong><br>
   <%= @project.creator_id %>
 </p>
 
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              projects_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_project_path(@project), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              project_path(@project),
+              :method => 'delete',
+              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+              :class => 'btn btn-danger' %>
+</div>
