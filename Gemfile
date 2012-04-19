@@ -14,7 +14,7 @@ group :assets do
   # gem 'therubyracer', :platform => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'bootstrap-sass'
+  gem 'twitter-bootstrap-rails'
 end
 
 gem 'jquery-rails'
@@ -46,4 +46,4 @@ gem "immigrant", "~> 0.1.1"
 gem "rails3_acts_as_paranoid", "~> 0.2.2"
 gem "will_paginate", "~> 3.0.3"
 
-gem "formtastic-bootstrap"
+#gem "formtastic-bootstrap"
