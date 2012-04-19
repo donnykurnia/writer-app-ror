@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
 
   acts_as_paranoid
 
+  validates :username, :presence => true
+
   def name
     self.username || self.email
   end
