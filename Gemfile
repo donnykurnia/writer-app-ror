@@ -49,3 +49,4 @@ gem "rails3_acts_as_paranoid", "~> 0.2.2"
 gem "will_paginate", "~> 3.0.3"
 
 #gem "formtastic-bootstrap"
+gem "simple_form", "~> 2.0.1"
