@@ -40,7 +40,7 @@ gem 'capistrano'
 
 gem 'thin'
 gem 'heroku'
-gem 'taps'
+gem 'taps', :group => :development
 
 gem "devise", "~> 2.0.4"
 gem "cancan", "~> 1.6.7"
