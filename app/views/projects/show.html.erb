@@ -1,0 +1,47 @@
+<%- model_class = @project.class -%>
+<h1><%=t '.title', :default => model_class.model_name.human %></h1>
+
+<p>
+  <strong><%= model_class.human_attribute_name(:title) %>:</strong><br>
+  <%= @project.title %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:description) %>:</strong><br>
+  <%= @project.description %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:total_cost) %>:</strong><br>
+  <%= @project.total_cost %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:team_id) %>:</strong><br>
+  <%= @project.team_id %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:status) %>:</strong><br>
+  <%= @project.status %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:deadline) %>:</strong><br>
+  <%= @project.deadline %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:deleted_at) %>:</strong><br>
+  <%= @project.deleted_at %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:creator_id) %>:</strong><br>
+  <%= @project.creator_id %>
+</p>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              projects_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_project_path(@project), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              project_path(@project),
+              :method => 'delete',
+              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+              :class => 'btn btn-danger' %>
+</div>

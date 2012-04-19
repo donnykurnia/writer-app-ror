@@ -1,0 +1,20 @@
+<section id="messages">
+  <div class="row">
+    <div class="span12">
+      <div id="messages_area">
+        <% if notice %>
+          <div class="alert alert-info">
+            <a class="close" data-dismiss="alert">×</a>
+            <i class="icon-ok-sign"></i> <%= notice %>
+          </div>
+        <% end %>
+        <% if alert %>
+          <div class="alert alert-error">
+            <a class="close" data-dismiss="alert">×</a>
+            <i class="icon-ok-sign"></i> <%= alert %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

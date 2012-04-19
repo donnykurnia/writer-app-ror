@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  description: MyText
+  total_cost: 9.99
+  team_id: 1
+  status: MyString
+  deadline: 2012-04-19 13:47:04
+  deleted_at: 2012-04-19 13:47:04
+  creator_id: 1
+
+two:
+  title: MyString
+  description: MyText
+  total_cost: 9.99
+  team_id: 1
+  status: MyString
+  deadline: 2012-04-19 13:47:04
+  deleted_at: 2012-04-19 13:47:04
+  creator_id: 1

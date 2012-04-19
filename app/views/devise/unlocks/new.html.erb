@@ -1,0 +1,13 @@
+<h2>Resend unlock instructions</h2>
+
+<%= simple_form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post, :class => 'form-horizontal' }) do |f| %>
+
+  <%= f.input :email %>
+
+  <div class="form-actions">
+    <%= f.submit "Resend unlock instructions", :class => 'btn btn-primary' %>
+  </div>
+
+<% end %>
+
+<%= render "links" %>

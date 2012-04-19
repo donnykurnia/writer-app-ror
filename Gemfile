@@ -14,7 +14,9 @@ group :assets do
   # gem 'therubyracer', :platform => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-  gem "less-rails-bootstrap", "~> 2.0.10"
+
+  gem 'twitter-bootstrap-rails'
+  gem 'bootstrap-sass'
 end
 
 gem 'jquery-rails'
@@ -37,8 +39,14 @@ gem 'capistrano'
 gem 'thin'
 gem 'heroku'
 gem 'taps'
+
 gem "devise", "~> 2.0.4"
 gem "cancan", "~> 1.6.7"
+
 gem "foreigner", "~> 1.1.6"
+gem "immigrant", "~> 0.1.1"
+gem "rails3_acts_as_paranoid", "~> 0.2.2"
 gem "will_paginate", "~> 3.0.3"
 
+#gem "formtastic-bootstrap"
+gem "simple_form", "~> 2.0.1"
