@@ -29,7 +29,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="/">WriterAppRor</a>
+          <a class="brand" href="/">Writer App</a>
           <div class="nav-collapse">
             <% if user_signed_in? %>
               <ul class="nav">
@@ -56,16 +56,15 @@
         <div class="row">
           <div class="span3">
             <div class="well sidebar-nav">
-              <h3>Sidebar</h3>
+              <h3>Writer App</h3>
               <ul class="nav nav-list">
+                <li class="nav-header">Welcome, <%= user_signed_in? ? current_user.email : "guest" %></li>
                 <% if user_signed_in? %>
-                  <li class="nav-header">Welcome, <%= current_user.email %></li>
-                  <li><a href="#"></a></li>
                   <li><%= link_to "Projects", projects_path  %></li>
+                  <li class="divider"></li>
                   <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
                 <% else %>
-                  <li class="nav-header">Welcome, guest</li>
-                  <li><%= link_to "Sign up", new_user_registration_path %></li>
+                  <li><%= link_to "Sign up as writer", new_user_registration_path %></li>
                   <li><%= link_to "Sign in", new_user_session_path %></li>
                 <% end %>
               </ul>
@@ -83,7 +82,7 @@
       </div><!--/content-->
 
       <footer>
-        <% render 'shared/footer' %>
+        <%= render 'shared/footer' %>
       </footer>
 
     </div> <!-- /container -->
