@@ -1,2 +1,8 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<header class="jumbotron subhead" id="overview">
+  <h1>Welcome to Writer Management App</h1>
+  <% if user_signed_in? %>
+    <p class="lead">Welcome <%= current_user.name %>, continue to your dashboard page.</p>
+  <% else %>
+    <p class="lead">Please <%= link_to "sign in", new_user_session_path %> to access this application.</p>
+  <% end %>
+</header>

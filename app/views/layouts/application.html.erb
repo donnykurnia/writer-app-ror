@@ -40,7 +40,7 @@
             <ul class="nav pull-right">
               <li class="divider-vertical"></li>
               <% if user_signed_in? %>
-                <li><%= link_to "Sign out (#{current_user.email})", destroy_user_session_path, :method => :delete %></li>
+                <li><%= link_to "Sign out (#{current_user.name})", destroy_user_session_path, :method => :delete %></li>
               <% else %>
                 <li><%= link_to "Sign in", new_user_session_path %></li>
               <% end %>
@@ -57,7 +57,7 @@
             <div class="well sidebar-nav">
               <h3>Writer App</h3>
               <ul class="nav nav-list">
-                <li class="nav-header">Welcome, <%= user_signed_in? ? current_user.email : "guest" %></li>
+                <li class="nav-header">Welcome, <%= user_signed_in? ? current_user.name : "guest" %></li>
                 <% if user_signed_in? %>
                   <li><%= link_to "Projects", projects_path  %></li>
                   <li><%= link_to "Users", users_path %></li>
