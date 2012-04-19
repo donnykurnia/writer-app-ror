@@ -30,12 +30,12 @@
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="/">WriterAppRor</a>
-          <div class="container nav-collapse">
-            <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
+          <div class="nav-collapse">
+            <% if user_signed_in? %>
+              <ul class="nav">
+                <li><%= link_to "Projects", projects_path %></li>
+              </ul>
+            <% end %>
             <ul class="nav pull-right">
               <li class="divider-vertical"></li>
               <% if user_signed_in? %>
@@ -58,10 +58,16 @@
             <div class="well sidebar-nav">
               <h3>Sidebar</h3>
               <ul class="nav nav-list">
-                <li class="nav-header">Sidebar</li>
-                <li><%= link_to "Link1", "/path1"  %></li>
-                <li><%= link_to "Link2", "/path2"  %></li>
-                <li><%= link_to "Link3", "/path3"  %></li>
+                <% if user_signed_in? %>
+                  <li class="nav-header">Welcome, <%= current_user.email %></li>
+                  <li><a href="#"></a></li>
+                  <li><%= link_to "Projects", projects_path  %></li>
+                  <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+                <% else %>
+                  <li class="nav-header">Welcome, guest</li>
+                  <li><%= link_to "Sign up", new_user_registration_path %></li>
+                  <li><%= link_to "Sign in", new_user_session_path %></li>
+                <% end %>
               </ul>
             </div><!--/.well -->
           </div><!--/span-->

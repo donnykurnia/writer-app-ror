@@ -11,7 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120419010214) do
+ActiveRecord::Schema.define(:version => 20120419064704) do
+
+  create_table "projects", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.decimal  "total_cost",  :precision => 11, :scale => 2
+    t.integer  "team_id"
+    t.string   "status"
+    t.datetime "deadline"
+    t.datetime "deleted_at"
+    t.integer  "creator_id"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
+  add_index "projects", ["creator_id"], :name => "index_projects_on_creator_id"
+  add_index "projects", ["deleted_at"], :name => "index_projects_on_deleted_at"
+  add_index "projects", ["status"], :name => "index_projects_on_status"
+  add_index "projects", ["team_id"], :name => "index_projects_on_team_id"
 
   create_table "teams", :force => true do |t|
     t.string   "name"
