@@ -4,6 +4,8 @@ gem 'rails', '3.2.3'
 
 gem 'pg'
 
+gem "multi_json", "~> 1.3.2"
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -38,7 +40,7 @@ gem 'capistrano'
 
 gem 'thin'
 gem 'heroku'
-gem 'taps'
+gem 'taps', :group => :development
 
 gem "devise", "~> 2.0.4"
 gem "cancan", "~> 1.6.7"
