@@ -21,9 +21,14 @@ class User < ActiveRecord::Base
   validates :username, :presence => true
 
   before_save :set_default_role
+  before_destroy :check_deleteable
 
   def name
-    self.full_name || self.username || self.email
+    unless self.full_name.blank?
+      self.full_name
+    else
+      self.username || self.email
+    end
   end
 
   def self.find_for_database_authentication(warden_conditions)
@@ -45,6 +50,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def deleteable?
+    false
+  end
+
   protected
 
     # If you need to validate the associated record, you can add a method like this:
@@ -60,6 +69,10 @@ class User < ActiveRecord::Base
 
     def set_default_role
       self.role = 'writer' if self.role.blank?
+    end
+
+    def check_deleteable
+      self.deleteable?
     end
 
 end
