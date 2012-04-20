@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :team
 
-  delegate :name, :to => :team, :prefix => true
+  delegate :name, :to => :team, :prefix => true, :allow_nil => true
 
   acts_as_paranoid
 
@@ -42,5 +42,18 @@ class User < ActiveRecord::Base
       super(params, *options)
     end
   end
+
+  protected
+
+    # If you need to validate the associated record, you can add a method like this:
+    #     validate_associated_record_for_team
+    def autosave_associated_records_for_team
+      if team.name.blank?
+        self.team_id = 1
+      else
+        # Find or create the team by name
+        self.team = Team.find_or_create_by_name(team.name)
+      end
+    end
 
 end
