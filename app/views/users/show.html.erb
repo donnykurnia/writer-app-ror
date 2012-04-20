@@ -10,12 +10,12 @@
   <%= @user.username %>
 </p>
 <p>
-  <strong><%= model_class.human_attribute_name(:role) %>:</strong><br>
-  <%= @user.role.titleize %>
-</p>
-<p>
   <strong><%= model_class.human_attribute_name(:full_name) %>:</strong><br>
   <%= @user.full_name %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:role) %>:</strong><br>
+  <%= @user.role.titleize %>
 </p>
 <p>
   <strong><%= model_class.human_attribute_name(:team) %>:</strong><br>
