@@ -1,11 +1,12 @@
 class ProjectsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :find_project, :only => [:show, :edit, :update, :destroy]
+  #before_filter :find_project, :only => [:show, :edit, :update, :destroy]
+  load_and_authorize_resource :through => :current_team
 
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    @projects = @projects.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,6 +27,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new.json
   def new
     @project = Project.new
+    @project.status = 'open'
 
     respond_to do |format|
       format.html # new.html.erb
@@ -70,10 +72,14 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
-    @project.destroy
     respond_to do |format|
-      format.html { redirect_to projects_url }
-      format.json { head :no_content }
+      if @project.destroy
+        format.html { redirect_to projects_url, notice: "Project '#{@project.title}' was successfully deleted." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to projects_url, alert: "Failed to delete project '#{@project.title}'." }
+        format.json { head :no_content }
+      end
     end
   end
 
