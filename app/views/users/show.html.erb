@@ -17,6 +17,10 @@
   <strong><%= model_class.human_attribute_name(:full_name) %>:</strong><br>
   <%= @user.full_name %>
 </p>
+<p>
+  <strong><%= model_class.human_attribute_name(:team_name) %>:</strong><br>
+  <%= @user.team_name %>
+</p>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
