@@ -2,6 +2,8 @@ class Team < ActiveRecord::Base
   attr_accessible :name
 
   has_many :users, :inverse_of => :team
+  has_many :managers, :class_name => "User", :conditions => "role = 'project manager'"
+  has_many :writers, :class_name => "User", :conditions => "role = 'writer'"
   has_many :projects, :inverse_of => :team
 
   acts_as_paranoid
