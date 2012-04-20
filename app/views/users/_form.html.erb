@@ -1,10 +1,10 @@
 <%= simple_form_for @user do |f| %>
-  <%= f.input :email %>
+  <%= f.input :email, :required => true %>
   <%= f.input :username %>
   <% if @user.id %>
     <%= f.input :password, :hint => "(leave blank if you don't want to change it)" %>
   <% else %>
-    <%= f.input :password %>
+    <%= f.input :password, :required => true %>
   <% end %>
   <%= f.input :password_confirmation %>
   <%= f.input :full_name %>

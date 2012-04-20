@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :login, :full_name, :role, :team_id, :team_attributes
   attr_accessor :login
 
+  ROLES = ['administrator', 'project manager', 'writer']
+
   belongs_to :team, :inverse_of => :users
   has_many :projects, :foreign_key => "creator_id", :inverse_of => :creator
 
@@ -19,11 +21,11 @@ class User < ActiveRecord::Base
   acts_as_paranoid
 
   validates :username, :presence => true
+  validates :role, :inclusion => { :in => self::ROLES,
+    :message => "%{value} is not a valid role" }
 
   before_save :set_default_role
   before_destroy :check_deleteable
-
-  ROLES = ['administrator', 'project manager', 'writer']
 
   def name
     unless self.full_name.blank?
