@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   belongs_to :team
   has_many :projects
 
+  delegate :name, :to => :team, :prefix => true
+
   acts_as_paranoid
 
   validates :username, :presence => true
