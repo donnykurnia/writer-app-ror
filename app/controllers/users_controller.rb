@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
   before_filter :authenticate_user!
-  before_filter :find_user, :only => [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -83,11 +83,5 @@ class UsersController < ApplicationController
       end
     end
   end
-
-  protected
-
-    def find_user
-      @user = User.find(params[:id])
-    end
 
 end
