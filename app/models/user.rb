@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
 
   validates :username, :presence => true
 
+  before_save :set_default_role
+
   def name
     self.full_name || self.username || self.email
   end
@@ -54,6 +56,10 @@ class User < ActiveRecord::Base
         # Find or create the team by name
         self.team = Team.find_or_create_by_name(team.name)
       end
+    end
+
+    def set_default_role
+      self.role = 'writer' if self.role.blank?
     end
 
 end
