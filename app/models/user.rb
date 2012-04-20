@@ -56,6 +56,18 @@ class User < ActiveRecord::Base
     self.projects.count == 0
   end
 
+  def admin?
+    self.role == 'administrator'
+  end
+
+  def manager?
+    self.role == 'project manager'
+  end
+
+  def writer?
+    self.role == 'writer'
+  end
+
   protected
 
     # If you need to validate the associated record, you can add a method like this:
