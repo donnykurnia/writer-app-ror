@@ -32,6 +32,8 @@ GEM
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.0.2)
+    bootstrap-will_paginate (0.0.7)
+      will_paginate
     builder (3.0.0)
     cancan (1.6.7)
     capistrano (2.12.0)
@@ -185,6 +187,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   bootstrap-sass
+  bootstrap-will_paginate (~> 0.0.7)
   cancan (~> 1.6.7)
   capistrano
   coffee-rails (~> 3.2.1)

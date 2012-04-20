@@ -49,6 +49,7 @@ gem "foreigner", "~> 1.1.6"
 gem "immigrant", "~> 0.1.1"
 gem "rails3_acts_as_paranoid", "~> 0.2.2"
 gem "will_paginate", "~> 3.0.3"
+gem "bootstrap-will_paginate", "~> 0.0.7"
 
 #gem "formtastic-bootstrap"
 gem "simple_form", "~> 2.0.1"
