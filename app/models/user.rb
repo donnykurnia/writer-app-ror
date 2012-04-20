@@ -25,4 +25,17 @@ class User < ActiveRecord::Base
     where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.strip.downcase }]).first
   end
 
+  def update_attributes(params, *options)
+    if params[:password].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation)
+
+      result = super(params, *options)
+      clean_up_passwords
+      result
+    else
+      super(params, *options)
+    end
+  end
+
 end
