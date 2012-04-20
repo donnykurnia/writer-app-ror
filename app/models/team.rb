@@ -6,7 +6,7 @@ class Team < ActiveRecord::Base
 
   acts_as_paranoid
 
-  validates :name, :uniqueness => true
+  #validates :name, :uniqueness => true
 
   before_destroy :check_deleteable
 
