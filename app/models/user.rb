@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
   end
 
   def deleteable?
-    false
+    self.projects.count == 0
   end
 
   protected
