@@ -5,4 +5,6 @@ class Team < ActiveRecord::Base
   has_many :projects
 
   acts_as_paranoid
+
+  validates :name, :presence => true
 end
