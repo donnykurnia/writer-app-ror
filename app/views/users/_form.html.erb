@@ -8,7 +8,9 @@
   <% end %>
   <%= f.input :password_confirmation %>
   <%= f.input :full_name %>
-  <%= f.input :role, :collection => User::ROLES, :as => :radio_buttons, :label_method => :titleize %>
+  <% if can? :assign_roles, @user %>
+    <%= f.input :role, :collection => User::ROLES, :as => :radio_buttons, :label_method => :titleize %>
+  <% end %>
   <%= f.simple_fields_for :team do |team| %>
     <%= team.input :name, :label => 'Team Name', :hint => 'If leave blank, then it will be set to Default Team' %>
   <% end %>
