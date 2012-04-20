@@ -27,6 +27,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @user.build_team
+    @user.role = 'writer'
 
     respond_to do |format|
       format.html # new.html.erb

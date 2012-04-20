@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
   before_save :set_default_role
   before_destroy :check_deleteable
 
+  ROLES = ['administrator', 'project manager', 'writer']
+
   def name
     unless self.full_name.blank?
       self.full_name
