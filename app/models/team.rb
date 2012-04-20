@@ -11,7 +11,7 @@ class Team < ActiveRecord::Base
   before_destroy :check_deleteable
 
   def deleteable?
-    self.users.count == 0
+    self.users.count == 0 && self.id > 1
   end
 
   protected
