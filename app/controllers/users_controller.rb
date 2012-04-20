@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource
   before_filter :authenticate_user!
+  load_and_authorize_resource
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.paginate(:page => params[:page])
+    @users = @users.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
