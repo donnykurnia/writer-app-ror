@@ -26,8 +26,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   # GET /projects/new.json
   def new
-    @project = Project.new
-    @project.status = 'open'
+    @project = Project.new({:status => 'open', :deadline => (Time.now + 7.days)})
 
     respond_to do |format|
       format.html # new.html.erb
