@@ -7,6 +7,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
 
     can :update, User, :id => user.id
+    can :read, Team, :id => user.team_id
     #can :read, Message, :readable_by => user
     #can :create, Message
 
