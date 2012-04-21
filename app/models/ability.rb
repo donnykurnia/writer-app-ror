@@ -8,7 +8,7 @@ class Ability
 
     can :update, User, :id => user.id
     can :read, Team, :id => user.team_id
-    #can :read, Message, :readable_by => user
+    #can :read, Message do |message| message.readable_by(user) end
     #can :create, Message
 
     if user.admin?
@@ -20,8 +20,8 @@ class Ability
       can :assign_roles, User
     elsif user.manager?
       can :read, User, :team_id => user.team_id
-      can :manage, Project, :team_id => user.team_id
       can :update, Team, :id => user.team_id
+      can :manage, Project, :team_id => user.team_id
       #can :manage, Milestone do |milestone| milestone.team_id == user.team_id end
       #can :examine, Bid do |bid| bid.team_id == user.team_id end
       #can :read, Report do |report| report.team_id == user.team_id end
