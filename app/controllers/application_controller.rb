@@ -8,10 +8,16 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => exception.message
+    respond_to do |format|
+      format.html { redirect_to root_url, :alert => exception.message }
+      format.js { render :js => j("alert('#{exception.message}');") }
+    end
   end
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
-    redirect_to root_url, :alert => 'Data not found!'
+    respond_to do |format|
+      format.html { redirect_to root_url, :alert => 'Data not found!' }
+      format.js { render :js => j("alert('Data not found!');") }
+    end
   end
 end
