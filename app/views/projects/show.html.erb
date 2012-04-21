@@ -11,11 +11,7 @@
 </p>
 <p>
   <strong><%= model_class.human_attribute_name(:total_cost) %>:</strong><br>
-  <%= @project.total_cost %>
-</p>
-<p>
-  <strong><%= model_class.human_attribute_name(:team_id) %>:</strong><br>
-  <%= @project.team_id %>
+  <%=number_to_currency(@project.total_cost, :precision => 2) %>
 </p>
 <p>
   <strong><%= model_class.human_attribute_name(:status) %>:</strong><br>
@@ -23,22 +19,22 @@
 </p>
 <p>
   <strong><%= model_class.human_attribute_name(:deadline) %>:</strong><br>
-  <%= @project.deadline %>
+  <%= @project.deadline.strftime("%d %b %Y") %>
 </p>
 <p>
-  <strong><%= model_class.human_attribute_name(:deleted_at) %>:</strong><br>
-  <%= @project.deleted_at %>
+  <strong><%= model_class.human_attribute_name(:creator) %>:</strong><br>
+  <%= @project.creator_name %>
 </p>
 <p>
-  <strong><%= model_class.human_attribute_name(:creator_id) %>:</strong><br>
-  <%= @project.creator_id %>
+  <strong><%= model_class.human_attribute_name(:team) %>:</strong><br>
+  <%= @project.team_name %>
 </p>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               projects_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_project_path(@project), :class => 'btn' %>
+              edit_project_path(@project), :class => 'btn btn-primary' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               project_path(@project),
               :method => 'delete',

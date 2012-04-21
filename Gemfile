@@ -23,6 +23,8 @@ end
 
 gem 'jquery-rails'
 
+gem "jquery-ui-themes", "~> 0.0.5"
+
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -48,7 +50,9 @@ gem "cancan", "~> 1.6.7"
 gem "foreigner", "~> 1.1.6"
 gem "immigrant", "~> 0.1.1"
 gem "rails3_acts_as_paranoid", "~> 0.2.2"
+gem "validates_timeliness", "~> 3.0.11"
 gem "will_paginate", "~> 3.0.3"
+gem "bootstrap-will_paginate", "~> 0.0.7"
 
 #gem "formtastic-bootstrap"
 gem "simple_form", "~> 2.0.1"

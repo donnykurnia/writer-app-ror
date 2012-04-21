@@ -1,53 +1,11 @@
-<%= form_for @project, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :title, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :title, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :description, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :description, :class => 'text_area' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :total_cost, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :total_cost, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :team_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :team_id, :class => 'number_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :status, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :status, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :deadline, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.datetime_select :deadline, :class => 'datetime_select' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :deleted_at, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.datetime_select :deleted_at, :class => 'datetime_select' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :creator_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :creator_id, :class => 'number_field' %>
-    </div>
-  </div>
-
+<%= simple_form_for @project do |f| %>
+  <%= f.input :title, :input_html => { :class => "input-xlarge" } %>
+  <%= f.input :description, :input_html => { :class => "input-xlarge", :rows => "7", :cols => "80" } %>
+  <%= f.input :total_cost, :wrapper => :prepend do %>
+    <%= content_tag :span, "$", :class => "add-on" %><%= f.input_field :total_cost %>
+  <% end %>
+  <%= f.input :status, :collection => Project::STATUSES.reject{|s| s == 'expired'}, :as => :radio_buttons, :label_method => :titleize %>
+  <%= f.input :deadline, :as => :string, :hint => 'Date Format: Y-m-d ex: 2012-12-25', :input_html => { :value => @project.deadline.strftime("%Y-%m-%d") } %>
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
