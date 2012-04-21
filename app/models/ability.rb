@@ -17,8 +17,7 @@ class Ability
       cannot :destroy, Team do |team|
         ! team.deleteable?
       end
-      can :assign_roles, User
-      can :assign_team, User
+      can [:assign_roles, :assign_team], User
     elsif user.manager?
       can :read, User, :team_id => user.team_id
       can :update, Team, :id => user.team_id
