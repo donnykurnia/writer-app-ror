@@ -22,13 +22,13 @@ class Ability
       can :read, User, :team_id => user.team_id
       can :update, Team, :id => user.team_id
       can :manage, Project, :team_id => user.team_id
-      #can :manage, Milestone do |milestone| milestone.team_id == user.team_id end
-      #can :examine, Bid do |bid| bid.team_id == user.team_id end
-      #can :read, Report do |report| report.team_id == user.team_id end
+      #can :manage, Milestone, :project => { :team_id => user.team_id }
+      #can :examine, Bid, :project => { :team_id => user.team_id }
+      #can :read, Report, :project => { :team_id => user.team_id }
     elsif user.writer?
       can :read, User, :id => user.id
       can :read, Project, :team_id => user.team_id
-      #can :read, Milestone do |milestone| milestone.team_id == user.team_id end
+      #can :read, Milestone, :project => { :team_id => user.team_id }
       #can :manage, Bid, :user_id => user.id
       #cannot :destroy, Bid
       #can :manage, Report, :user_id => user.id
