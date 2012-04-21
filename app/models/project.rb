@@ -9,6 +9,7 @@ class Project < ActiveRecord::Base
 
   delegate :name, :to => :creator, :prefix => true
   delegate :name, :to => :team, :prefix => true
+  delegate :writers, :to => :team, :prefix => true
 
   before_destroy :check_deleteable
   before_create :set_team
@@ -39,7 +40,7 @@ class Project < ActiveRecord::Base
     end
 
     def send_new_project_notification
-      project.team.writers.each do |writer|
+      self.team_writers.each do |writer|
         UserMailer.new_project_notification(self, writer).deliver
       end
     end
