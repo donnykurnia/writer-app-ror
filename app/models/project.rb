@@ -19,7 +19,7 @@ class Project < ActiveRecord::Base
   validates :total_cost, :presence => true, :numericality => true
   validates :status, :inclusion => { :in => self::STATUSES,
     :message => "%{value} is not a valid status" }
-  validates :deadline, :presence => true
+  validates :deadline, :timeliness => {:type => :date}
 
   def deleteable?
     true
