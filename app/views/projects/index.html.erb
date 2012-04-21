@@ -24,7 +24,7 @@
           <td><%= number_to_currency(project.total_cost, :precision => 2) %></td>
           <td><%= project.team_name %></td>
           <td><%= project.status %></td>
-          <td><%= project.deadline.to_formatted_s(:rfc822) %></td>
+          <td><%= project.deadline.strftime("%Y-%m-%d") %></td>
           <td><%= project.creator_name %></td>
           <td>
             <% if can? :update, project %>

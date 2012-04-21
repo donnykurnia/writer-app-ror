@@ -11,7 +11,7 @@
 </p>
 <p>
   <strong><%= model_class.human_attribute_name(:total_cost) %>:</strong><br>
-  <%= @project.total_cost %>
+  <%=number_to_currency(@project.total_cost, :precision => 2) %>
 </p>
 <p>
   <strong><%= model_class.human_attribute_name(:team) %>:</strong><br>
@@ -23,7 +23,7 @@
 </p>
 <p>
   <strong><%= model_class.human_attribute_name(:deadline) %>:</strong><br>
-  <%= @project.deadline %>
+  <%= @project.deadline.strftime("%Y-%m-%d") %>
 </p>
 <p>
   <strong><%= model_class.human_attribute_name(:creator) %>:</strong><br>
