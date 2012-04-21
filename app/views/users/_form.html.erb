@@ -11,8 +11,10 @@
   <% if can? :assign_roles, @user %>
     <%= f.input :role, :collection => User::ROLES, :as => :radio_buttons, :label_method => :titleize %>
   <% end %>
-  <%= f.simple_fields_for :team do |team| %>
-    <%= team.input :name, :label => 'Team Name', :hint => 'If leave blank, then it will be set to Default Team' %>
+  <% if can? :assign_team, @user %>
+    <%= f.simple_fields_for :team do |team| %>
+      <%= team.input :name, :label => 'Team Name', :hint => 'If leave blank, then it will be set to Default Team' %>
+    <% end %>
   <% end %>
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
