@@ -39,6 +39,7 @@ class Project < ActiveRecord::Base
     end
 
     def send_new_project_notification
+      UserMailer.new_project_notification(self).deliver
     end
 
 end
