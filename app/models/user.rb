@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
   acts_as_paranoid
 
-  validates :username, :presence => true
+  validates :username, :presence => true, :uniqueness =>true
   validates :role, :inclusion => { :in => self::ROLES,
     :message => "%{value} is not a valid role" }
 
@@ -75,11 +75,11 @@ class User < ActiveRecord::Base
     # If you need to validate the associated record, you can add a method like this:
     #     validate_associated_record_for_team
     def autosave_associated_records_for_team
-      if team.name.blank?
-        self.team_id = 1
-      else
+      if team.name?
         # Find or create the team by name
         self.team = Team.find_or_create_by_name(team.name)
+      else
+        self.team_id = 1
       end
     end
 
