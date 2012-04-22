@@ -1,17 +1,17 @@
-<%= simple_form_for @user do |f| %>
+<%= simple_form_for user do |f| %>
   <%= f.input :email, :required => true %>
   <%= f.input :username %>
-  <% if @user.id %>
+  <% if user.id %>
     <%= f.input :password, :hint => "(leave blank if you don't want to change it)" %>
   <% else %>
     <%= f.input :password, :required => true %>
   <% end %>
   <%= f.input :password_confirmation %>
   <%= f.input :full_name %>
-  <% if can? :assign_roles, @user %>
+  <% if can? :assign_roles, user %>
     <%= f.input :role, :collection => User::ROLES, :as => :radio_buttons, :label_method => :titleize %>
   <% end %>
-  <% if can? :assign_team, @user %>
+  <% if can? :assign_team, user %>
     <%= f.simple_fields_for :team do |team| %>
       <%= team.input :name, :label => 'Team Name', :hint => 'If leave blank, then it will be set to Default Team' %>
     <% end %>
