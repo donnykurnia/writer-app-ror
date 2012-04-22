@@ -82,10 +82,4 @@ class ProjectsController < ApplicationController
     end
   end
 
-  protected
-
-    def find_project
-      @project = Project.find(params[:id])
-    end
-
 end
