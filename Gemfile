@@ -56,3 +56,22 @@ gem "bootstrap-will_paginate", "~> 0.0.7"
 
 #gem "formtastic-bootstrap"
 gem "simple_form", "~> 2.0.1"
+
+group :test, :development do
+  gem "rspec-rails"
+end
+
+group :test do
+  gem "factory_girl_rails"
+  gem "capybara"
+  gem "guard-rspec"
+  gem "guard-livereload"
+  gem "guard-cucumber"
+  gem "turn"
+  gem "libnotify"
+  gem "shoulda"
+  gem "cucumber-rails"
+  gem "database_cleaner"
+  gem "spork"
+  gem "launchy"
+end
