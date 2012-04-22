@@ -13,7 +13,6 @@ class Project < ActiveRecord::Base
 
   before_destroy :check_deleteable
   before_create :set_team
-  after_create :send_new_project_notification
 
   acts_as_paranoid
 
@@ -37,12 +36,6 @@ class Project < ActiveRecord::Base
 
     def set_team
       self.team_id = self.creator.team_id
-    end
-
-    def send_new_project_notification
-      self.team_writers.each do |writer|
-        UserMailer.new_project_notification(self, writer).deliver
-      end
     end
 
 end
