@@ -37,7 +37,7 @@
   </tbody>
 </table>
 
-<%= will_paginate @users %>
+<%= paginate @users %>
 
 <% if can? :create, User %>
   <%= link_to t('.new', :default => t("helpers.links.new")),

@@ -43,7 +43,7 @@
   </table>
 <% end %>
 
-<%= will_paginate @projects %>
+<%= paginate @projects %>
 
 <% if can? :create, Project %>
   <%= link_to t('.new', :default => t("helpers.links.new")),

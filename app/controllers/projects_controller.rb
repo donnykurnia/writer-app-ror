@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = @projects.paginate(:page => params[:page])
+    @projects = @projects.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

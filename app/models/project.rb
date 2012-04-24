@@ -23,6 +23,8 @@ class Project < ActiveRecord::Base
     :message => "%{value} is not a valid status" }
   validates :deadline, :timeliness => {:type => :date}
 
+  paginates_per 20
+
   def deleteable?
     true
     #self.bids.count == 0

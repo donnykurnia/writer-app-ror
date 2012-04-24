@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
   before_save :set_default_role
   before_destroy :check_deleteable
 
+  paginates_per 20
+
   def name
     unless self.full_name.blank?
       self.full_name
