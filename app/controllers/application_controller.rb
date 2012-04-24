@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  responders :flash, :http_cache
+  respond_to :html, :xml, :json
   check_authorization :unless => :devise_controller?
   helper_method :current_team
 
