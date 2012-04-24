@@ -51,4 +51,10 @@ class UsersController < ApplicationController
     respond_with @user
   end
 
+  protected
+
+    def interpolation_options
+      { :user_name => @user.name }
+    end
+
 end

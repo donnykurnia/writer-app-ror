@@ -49,4 +49,10 @@ class ProjectsController < ApplicationController
     respond_with @project
   end
 
+  protected
+
+    def interpolation_options
+      { :project_title => @project.title }
+    end
+
 end
