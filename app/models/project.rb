@@ -25,6 +25,10 @@ class Project < ActiveRecord::Base
 
   paginates_per 20
 
+  def to_s
+    self.title
+  end
+
   def deleteable?
     true
     #self.bids.count == 0
