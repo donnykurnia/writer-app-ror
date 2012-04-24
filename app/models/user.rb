@@ -94,7 +94,12 @@ class User < ActiveRecord::Base
     end
 
     def check_deleteable
-      self.deleteable?
+      if self.deleteable?
+        true
+      else
+        errors[:base] << "Delete failed"
+        false
+      end
     end
 
 end

@@ -37,7 +37,12 @@ class Project < ActiveRecord::Base
   protected
 
     def check_deleteable
-      self.deleteable?
+      if self.deleteable?
+        true
+      else
+        errors[:base] << "Delete failed"
+        false
+      end
     end
 
     def set_team
