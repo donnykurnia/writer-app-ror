@@ -57,6 +57,7 @@ gem "kaminari"
 gem "simple_form", "~> 2.0.1"
 
 gem 'responders'
+gem 'has_scope'
 
 group :test, :development do
   gem "rspec-rails"
