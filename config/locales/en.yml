@@ -16,3 +16,11 @@ en:
       destroy:
         notice: "%{resource_name} was successfully destroyed"
         alert: "%{resource_name} could not be destroyed"
+    projects:
+      destroy:
+        notice: "%{resource_name} '%{project_title}' was successfully destroyed"
+        alert: "%{resource_name} '%{project_title}' could not be destroyed"
+    users:
+      destroy:
+        notice: "%{resource_name} '%{user_name}' was successfully destroyed"
+        alert: "%{resource_name} '%{user_name}' could not be destroyed"
