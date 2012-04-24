@@ -56,6 +56,8 @@ gem "kaminari"
 #gem "formtastic-bootstrap"
 gem "simple_form", "~> 2.0.1"
 
+gem 'responders'
+
 group :test, :development do
   gem "rspec-rails"
 end
