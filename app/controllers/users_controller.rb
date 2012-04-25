@@ -47,9 +47,9 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     if @user.destroy
-      flash[:notice] = "#{@user.class.model_name.human} '#{@user.name}' was successfully destroyed"
+      flash[:notice] = "User '#{@user.name}' was successfully destroyed"
     else
-      flash[:alert] = "#{@user.class.model_name.human} '#{@user.name}' could not be destroyed"
+      flash[:alert] = "User '#{@user.name}' could not be destroyed"
     end
     respond_with @user
   end
