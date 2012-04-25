@@ -1,0 +1,10 @@
+<tr>
+  <td><%= f.object_name.gsub(/[^0-9]+/,'').to_i + 1 %></td>
+  <td><%= f.input :title, :label => false, :wrapper => :table %></td>
+  <td><%= f.input :amount, :label => false, :wrapper => :table_prepend do %>
+    <%= content_tag :span, "$", :class => "add-on" %><%= f.input_field :amount, :class => 'input-small' %>
+  <% end %></td>
+  <td>
+    <%= link_to_remove_fields("Remove", f) %>
+  </td>
+</tr>

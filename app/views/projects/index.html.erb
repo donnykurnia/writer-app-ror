@@ -20,7 +20,7 @@
         <tr>
           <td><%= link_to project.title, project_path(project) %></td>
           <td><%= number_to_currency(project.total_cost, :precision => 2) %></td>
-          <td><%= project.status %></td>
+          <td><%= project.status.humanize %></td>
           <td><%= project.deadline.strftime("%d %b %Y") %></td>
           <td><%= project.creator_name %></td>
           <td><%= project.team_name %></td>
@@ -43,7 +43,7 @@
   </table>
 <% end %>
 
-<%= will_paginate @projects %>
+<%= paginate @projects %>
 
 <% if can? :create, Project %>
   <%= link_to t('.new', :default => t("helpers.links.new")),

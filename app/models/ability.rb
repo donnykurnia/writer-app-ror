@@ -17,19 +17,18 @@ class Ability
       cannot :destroy, Team do |team|
         ! team.deleteable?
       end
-      can :assign_roles, User
-      can :assign_team, User
+      can [:assign_roles, :assign_team], User
     elsif user.manager?
       can :read, User, :team_id => user.team_id
       can :update, Team, :id => user.team_id
       can :manage, Project, :team_id => user.team_id
-      #can :manage, Milestone, :project => { :team_id => user.team_id }
+      can :manage, Milestone, :project => { :team_id => user.team_id }
       #can :examine, Bid, :project => { :team_id => user.team_id }
       #can :read, Report, :project => { :team_id => user.team_id }
     elsif user.writer?
       can :read, User, :id => user.id
       can :read, Project, :team_id => user.team_id
-      #can :read, Milestone, :project => { :team_id => user.team_id }
+      can :read, Milestone, :project => { :team_id => user.team_id }
       #can :manage, Bid, :user_id => user.id
       #cannot :destroy, Bid
       #can :manage, Report, :user_id => user.id

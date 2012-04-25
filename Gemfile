@@ -51,8 +51,29 @@ gem "foreigner", "~> 1.1.6"
 gem "immigrant", "~> 0.1.1"
 gem "rails3_acts_as_paranoid", "~> 0.2.2"
 gem "validates_timeliness", "~> 3.0.11"
-gem "will_paginate", "~> 3.0.3"
-gem "bootstrap-will_paginate", "~> 0.0.7"
+gem "kaminari"
 
 #gem "formtastic-bootstrap"
 gem "simple_form", "~> 2.0.1"
+
+gem 'responders'
+gem 'has_scope'
+
+group :test, :development do
+  gem "rspec-rails"
+end
+
+group :test do
+  gem "factory_girl_rails"
+  gem "capybara"
+  gem "guard-rspec"
+  gem "guard-livereload"
+  gem "guard-cucumber"
+  gem "turn"
+  gem "libnotify"
+  gem "shoulda"
+  gem "cucumber-rails"
+  gem "database_cleaner"
+  gem "spork"
+  gem "launchy"
+end

@@ -1,4 +1,14 @@
 class User < ActiveRecord::Base
+  belongs_to :team, :inverse_of => :users
+  has_many :projects, :foreign_key => "creator_id", :inverse_of => :creator
+  has_many :milestones, :foreign_key => "writer_id", :inverse_of => :writer
+
+  accepts_nested_attributes_for :team
+
+  delegate :name, :to => :team, :prefix => true, :allow_nil => true
+
+  ROLES = ['administrator', 'project manager', 'writer']
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
@@ -9,23 +19,16 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :login, :full_name, :role, :team_id, :team_attributes
   attr_accessor :login
 
-  ROLES = ['administrator', 'project manager', 'writer']
-
-  belongs_to :team, :inverse_of => :users
-  has_many :projects, :foreign_key => "creator_id", :inverse_of => :creator
-
-  accepts_nested_attributes_for :team
-
-  delegate :name, :to => :team, :prefix => true, :allow_nil => true
-
   acts_as_paranoid
 
-  validates :username, :presence => true
+  validates :username, :presence => true, :uniqueness =>true
   validates :role, :inclusion => { :in => self::ROLES,
     :message => "%{value} is not a valid role" }
 
   before_save :set_default_role
   before_destroy :check_deleteable
+
+  paginates_per 20
 
   def name
     unless self.full_name.blank?
@@ -33,6 +36,10 @@ class User < ActiveRecord::Base
     else
       self.username || self.email
     end
+  end
+
+  def to_s
+    self.name
   end
 
   def self.find_for_database_authentication(warden_conditions)
@@ -75,11 +82,11 @@ class User < ActiveRecord::Base
     # If you need to validate the associated record, you can add a method like this:
     #     validate_associated_record_for_team
     def autosave_associated_records_for_team
-      if team.name.blank?
-        self.team_id = 1
-      else
+      if team.name?
         # Find or create the team by name
         self.team = Team.find_or_create_by_name(team.name)
+      else
+        self.team_id = 1
       end
     end
 
@@ -88,7 +95,12 @@ class User < ActiveRecord::Base
     end
 
     def check_deleteable
-      self.deleteable?
+      if self.deleteable?
+        true
+      else
+        errors[:base] << "Delete failed"
+        false
+      end
     end
 
 end
