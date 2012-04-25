@@ -2,7 +2,7 @@ class Project < ActiveRecord::Base
   belongs_to :team, :inverse_of => :projects
   belongs_to :creator, :class_name => "User",
     :foreign_key => "creator_id", :inverse_of => :projects
-  has_many :milestones, :inverse_of => :project, :dependent => :destroy
+  has_many :milestones, :inverse_of => :project, :dependent => :destroy, :order => "id ASC"
 
   accepts_nested_attributes_for :milestones, :allow_destroy => true
 
