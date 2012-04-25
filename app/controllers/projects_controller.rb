@@ -44,14 +44,12 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
-    @project.destroy
+    if @project.destroy
+      flash[:notice] = "#{@project.class.model_name.human} '#{@project.title}' was successfully destroyed"
+    else
+      flash[:alert] = "#{@project.class.model_name.human} '#{@project.title}' could not be destroyed"
+    end
     respond_with @project
   end
-
-  protected
-
-    def interpolation_options
-      { :project_title => @project.title }
-    end
 
 end
