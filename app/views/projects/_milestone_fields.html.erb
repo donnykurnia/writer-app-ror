@@ -5,7 +5,6 @@
     <%= content_tag :span, "$", :class => "add-on" %><%= f.input_field :amount, :class => 'input-small' %>
   <% end %></td>
   <td>
-    <%= f.hidden_field :_destroy %>
-    <%= link_to_function "remove", "remove_fields(this)" %>
+    <%= link_to_remove_fields("Remove", f) %>
   </td>
 </tr>
