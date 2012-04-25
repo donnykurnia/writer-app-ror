@@ -26,10 +26,9 @@
         <% end %>
       </tbody>
     </table>
-    <%= link_to 'Add Milestone',
-              '#',
-              :class => 'btn btn-primary',
-              :id => 'add_milestone' %>
+    <%= link_to_add_fields "Add Milestone", f, :milestones,
+      :class => 'btn btn-inverse',
+      :id => 'add_milestone' %>
   </fieldset>
   <fieldset>
     <div class="form-actions">

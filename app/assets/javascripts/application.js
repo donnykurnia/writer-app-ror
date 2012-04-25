@@ -22,8 +22,8 @@ function remove_fields(link) {
   $(link).closest("table").removeClass('table-striped');
 }
 
-function add_fields(link, association, content, table) {
+function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
-  $('tbody', $(table)).append(content.replace(regexp, new_id));
+  $('tbody', $(link).prev()).append(content.replace(regexp, new_id));
 }
