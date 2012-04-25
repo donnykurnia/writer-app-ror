@@ -27,5 +27,5 @@ function add_fields(link, association, content) {
   var regexp = new RegExp("new_" + association, "g");
   var tbody = $('tbody', $(link).prev())
     .append(content.replace(regexp, new_id));
-  tbody.children(':last').children(':first').text(tbody.children().length);
+  tbody.children('tr:last').children('td:first').text(tbody.children('tr').length);
 }
