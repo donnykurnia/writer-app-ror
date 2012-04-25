@@ -16,7 +16,7 @@
       <tr>
         <td><%= link_to user.username, user_path(user) %></td>
         <td><%= user.email %></td>
-        <td><%= user.role.titleize %></td>
+        <td><%= user.role.humanize %></td>
         <td><%= user.full_name %></td>
         <td><%= user.team_name %></td>
         <td>

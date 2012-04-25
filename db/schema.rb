@@ -11,7 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120420002428) do
+ActiveRecord::Schema.define(:version => 20120425030935) do
+
+  create_table "milestones", :force => true do |t|
+    t.integer  "project_id"
+    t.string   "title"
+    t.text     "description"
+    t.decimal  "amount",       :precision => 11, :scale => 2
+    t.string   "status"
+    t.integer  "writer_id"
+    t.datetime "payment_time"
+    t.string   "payment_via"
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
+    t.datetime "deleted_at"
+  end
+
+  add_index "milestones", ["deleted_at"], :name => "index_milestones_on_deleted_at"
+  add_index "milestones", ["project_id"], :name => "index_milestones_on_project_id"
+  add_index "milestones", ["status"], :name => "index_milestones_on_status"
+  add_index "milestones", ["writer_id"], :name => "index_milestones_on_writer_id"
 
   create_table "projects", :force => true do |t|
     t.string   "title"
@@ -67,6 +86,9 @@ ActiveRecord::Schema.define(:version => 20120420002428) do
   add_index "users", ["role"], :name => "index_users_on_role"
   add_index "users", ["team_id"], :name => "index_users_on_team_id"
   add_index "users", ["username"], :name => "index_users_on_username", :unique => true
+
+  add_foreign_key "milestones", "projects", :name => "milestones_project_id_fk"
+  add_foreign_key "milestones", "users", :name => "milestones_writer_id_fk", :column => "writer_id"
 
   add_foreign_key "projects", "teams", :name => "projects_team_id_fk"
   add_foreign_key "projects", "users", :name => "projects_creator_id_fk", :column => "creator_id"

@@ -11,11 +11,11 @@
 </p>
 <p>
   <strong><%= model_class.human_attribute_name(:total_cost) %>:</strong><br>
-  <%=number_to_currency(@project.total_cost, :precision => 2) %>
+  <%= number_to_currency(@project.total_cost, :precision => 2) %>
 </p>
 <p>
   <strong><%= model_class.human_attribute_name(:status) %>:</strong><br>
-  <%= @project.status %>
+  <%= @project.status.humanize %>
 </p>
 <p>
   <strong><%= model_class.human_attribute_name(:deadline) %>:</strong><br>
@@ -29,7 +29,22 @@
   <strong><%= model_class.human_attribute_name(:team) %>:</strong><br>
   <%= @project.team_name %>
 </p>
-
+<p>
+  <strong><%= model_class.human_attribute_name(:milestones) %>:</strong><br>
+  <table class="table table-striped" id="milestone_fields">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Amount</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @project.milestones %>
+    </tbody>
+  </table>
+</p>
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               projects_path, :class => 'btn'  %>

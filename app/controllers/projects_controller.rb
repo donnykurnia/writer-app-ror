@@ -24,7 +24,6 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
-    respond_with @project
   end
 
   # POST /projects
@@ -45,9 +44,9 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1.json
   def destroy
     if @project.destroy
-      flash[:notice] = "#{@project.class.model_name.human} '#{@project.title}' was successfully destroyed"
+      flash[:notice] = "Project '#{@project.title}' was successfully destroyed"
     else
-      flash[:alert] = "#{@project.class.model_name.human} '#{@project.title}' could not be destroyed"
+      flash[:alert] = "Project '#{@project.title}' could not be destroyed"
     end
     respond_with @project
   end

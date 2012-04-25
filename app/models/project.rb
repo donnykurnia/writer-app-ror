@@ -1,15 +1,18 @@
 class Project < ActiveRecord::Base
-  attr_accessible :title, :description, :status, :deadline, :creator_id, :team_id, :total_cost
-
-  STATUSES = ['open', 'in progress', 'finished', 'expired']
-
   belongs_to :team, :inverse_of => :projects
   belongs_to :creator, :class_name => "User",
     :foreign_key => "creator_id", :inverse_of => :projects
+  has_many :milestones, :inverse_of => :project, :dependent => :destroy, :order => "id ASC"
+
+  accepts_nested_attributes_for :milestones, :allow_destroy => true
 
   delegate :name, :to => :creator, :prefix => true
   delegate :name, :to => :team, :prefix => true
   delegate :writers, :to => :team, :prefix => true
+
+  STATUSES = ['open', 'in progress', 'finished', 'expired']
+
+  attr_accessible :title, :description, :status, :deadline, :creator_id, :team_id, :total_cost, :milestones_attributes
 
   before_destroy :check_deleteable
   before_create :set_team

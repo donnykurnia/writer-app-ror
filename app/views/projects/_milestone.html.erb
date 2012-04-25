@@ -1,0 +1,6 @@
+<tr>
+  <td><%= milestone_counter + 1 %></td>
+  <td><%= milestone.title %></td>
+  <td><%= number_to_currency(milestone.amount, :precision => 2) %></td>
+  <td><%= milestone.status.humanize %></td>
+</tr>

@@ -1,4 +1,14 @@
 class User < ActiveRecord::Base
+  belongs_to :team, :inverse_of => :users
+  has_many :projects, :foreign_key => "creator_id", :inverse_of => :creator
+  has_many :milestones, :foreign_key => "writer_id", :inverse_of => :writer
+
+  accepts_nested_attributes_for :team
+
+  delegate :name, :to => :team, :prefix => true, :allow_nil => true
+
+  ROLES = ['administrator', 'project manager', 'writer']
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
@@ -8,15 +18,6 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :login, :full_name, :role, :team_id, :team_attributes
   attr_accessor :login
-
-  ROLES = ['administrator', 'project manager', 'writer']
-
-  belongs_to :team, :inverse_of => :users
-  has_many :projects, :foreign_key => "creator_id", :inverse_of => :creator
-
-  accepts_nested_attributes_for :team
-
-  delegate :name, :to => :team, :prefix => true, :allow_nil => true
 
   acts_as_paranoid
 
