@@ -27,6 +27,7 @@ class Ability
       #can :read, Report, :project => { :team_id => user.team_id }
     elsif user.writer?
       can :read, User, :id => user.id
+      can :read, User, :team_id => user.team_id, :role => 'project manager'
       can :read, Project, :team_id => user.team_id
       can :read, Milestone, :project => { :team_id => user.team_id }
       #can :manage, Bid, :user_id => user.id
