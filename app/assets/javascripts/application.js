@@ -15,3 +15,15 @@
 //= require jquery-ui
 //= require bootstrap
 //= require_tree .
+
+function remove_fields(link) {
+  $(link).prev("input[type=hidden]").val("1");
+  $(link).closest("tr").hide();
+  $(link).closest("table").removeClass('table-striped');
+}
+
+function add_fields(link, association, content, table) {
+  var new_id = new Date().getTime();
+  var regexp = new RegExp("new_" + association, "g");
+  $('tbody', $(table)).append(content.replace(regexp, new_id));
+}

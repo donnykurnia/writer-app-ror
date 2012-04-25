@@ -1,14 +1,41 @@
 <%= simple_form_for project do |f| %>
-  <%= f.input :title, :input_html => { :class => "input-xlarge" } %>
-  <%= f.input :description, :input_html => { :class => "input-xlarge", :rows => "7", :cols => "80" } %>
-  <%= f.input :total_cost, :wrapper => :prepend do %>
-    <%= content_tag :span, "$", :class => "add-on" %><%= f.input_field :total_cost %>
-  <% end %>
-  <%= f.input :status, :collection => Project::STATUSES.reject{|s| s == 'expired'}, :as => :radio_buttons, :label_method => :titleize %>
-  <%= f.input :deadline, :as => :string, :hint => 'Date Format: Y-m-d ex: 2012-12-25', :input_html => { :value => project.deadline.strftime("%Y-%m-%d") } %>
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                projects_path, :class => 'btn' %>
-  </div>
+  <fieldset>
+    <legend>Project</legend>
+    <%= f.input :title, :input_html => { :class => "input-xlarge" } %>
+    <%= f.input :description, :input_html => { :class => "input-xlarge", :rows => "5", :cols => "80" } %>
+    <%= f.input :total_cost, :wrapper => :prepend do %>
+      <%= content_tag :span, "$", :class => "add-on" %><%= f.input_field :total_cost %>
+    <% end %>
+    <%= f.input :status, :collection => Project::STATUSES.reject{|s| s == 'expired'}, :as => :radio_buttons, :label_method => :titleize %>
+    <%= f.input :deadline, :as => :string, :hint => 'Date Format: Y-m-d ex: 2012-12-25', :input_html => { :value => project.deadline.strftime("%Y-%m-%d") } %>
+  </fieldset>
+  <fieldset>
+    <legend>Milestones</legend>
+    <table class="table table-striped" id="milestone_fields">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Amount</th>
+          <th>Remove Milestone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= f.simple_fields_for :milestones do |milestone| %>
+          <%= render 'milestone_fields', :f => milestone %>
+        <% end %>
+      </tbody>
+    </table>
+    <%= link_to 'Add Milestone',
+              '#',
+              :class => 'btn btn-primary',
+              :id => 'add_milestone' %>
+  </fieldset>
+  <fieldset>
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  projects_path, :class => 'btn' %>
+    </div>
+  </fieldset>
 <% end %>
