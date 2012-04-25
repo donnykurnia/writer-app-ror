@@ -25,7 +25,6 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    respond_with @user
   end
 
   # POST /users
