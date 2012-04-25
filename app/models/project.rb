@@ -4,7 +4,7 @@ class Project < ActiveRecord::Base
     :foreign_key => "creator_id", :inverse_of => :projects
   has_many :milestones, :inverse_of => :project, :dependent => :destroy
 
-  accepts_nested_attributes_for :milestones
+  accepts_nested_attributes_for :milestones, :allow_destroy => true
 
   delegate :name, :to => :creator, :prefix => true
   delegate :name, :to => :team, :prefix => true
