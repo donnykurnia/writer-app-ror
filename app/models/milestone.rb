@@ -30,6 +30,10 @@ class Milestone < ActiveRecord::Base
     self.writer_id.nil? || self.status == 'open'
   end
 
+  def to_partial_path
+    "projects/milestone"
+  end
+
   protected
 
     def check_deleteable
