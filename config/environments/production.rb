@@ -52,12 +52,12 @@ WriterAppRor::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.webfaction.com",
-    :port                 => 25,
-    :domain               => 'dev.abifathir.com',
-    :user_name            => 'writer_app',
-    :password             => 'writer-app-123',
-    :authentication       => 'plain',
+    :port                 => ENV['MAILGUN_SMTP_PORT'], 
+    :address              => ENV['MAILGUN_SMTP_SERVER'],
+    :user_name            => ENV['MAILGUN_SMTP_LOGIN'],
+    :password             => ENV['MAILGUN_SMTP_PASSWORD'],
+    :domain               => 'writer-app-ror.herokuapp.com',
+    :authentication       => :plain,
     :enable_starttls_auto => true
   }
   config.action_mailer.default_url_options = { :host => 'writer-app-ror.herokuapp.com' }
