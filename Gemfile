@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.11'
 
 gem 'pg'
-gem 'mysql2', '~> 0.2.17'
+gem 'mysql2', '~> 0.3'
 
 gem "multi_json", "~> 1.3.2"
 
@@ -42,7 +42,6 @@ gem 'capistrano'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 gem 'thin'
-gem 'heroku'
 gem 'taps', :group => :development
 
 gem "devise", "~> 2.0.4"
@@ -50,7 +49,7 @@ gem "cancan", "~> 1.6.7"
 
 gem "foreigner", "~> 1.1.6"
 gem "immigrant", "~> 0.1.1"
-gem "rails3_acts_as_paranoid", "~> 0.2.2"
+gem "acts_as_paranoid"
 gem "validates_timeliness", "~> 3.0.11"
 gem "kaminari"
 
